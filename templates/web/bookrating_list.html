@@ -1,0 +1,15 @@
+{% load paginator_tags %}<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	<meta charset="utf-8" />
+</head>
+<body>
+	<ul>
+		{% for obj in object_list %}
+			<li>{{ obj.name }} - {{ obj.rating }}{% if obj.total_revenue %} - {{ obj.total_revenue }} €{% endif %}</li>
+		{% endfor %}
+	</ul>
+	{% pagination %}
+</body>
+</html>
