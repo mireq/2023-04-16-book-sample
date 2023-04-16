@@ -25,29 +25,17 @@ SECRET_KEY = 'django-insecure-aa)dj-(6(ek)3ii%fv@#3ooz9k5*s$c(6b+hc2!!c)a7@jhu^a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-	#'django.contrib.admin',
-	#'django.contrib.auth',
-	#'django.contrib.contenttypes',
-	#'django.contrib.sessions',
-	#'django.contrib.messages',
-	#'django.contrib.staticfiles',
+	'django_universal_paginator',
 	'web',
 ]
 
 MIDDLEWARE = [
-	#'django.middleware.security.SecurityMiddleware',
-	#'django.contrib.sessions.middleware.SessionMiddleware',
-	#'django.middleware.common.CommonMiddleware',
-	#'django.middleware.csrf.CsrfViewMiddleware',
-	#'django.contrib.auth.middleware.AuthenticationMiddleware',
-	#'django.contrib.messages.middleware.MessageMiddleware',
-	#'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'web.urls'
@@ -59,16 +47,9 @@ TEMPLATES = [
 		'APP_DIRS': True,
 		'OPTIONS': {
 			'context_processors': [
-				#'django.template.context_processors.debug',
-				#'django.template.context_processors.request',
-				#'django.template.context_processors.i18n',
-				#'django.contrib.auth.context_processors.auth',
-				#'django.contrib.messages.context_processors.messages',
+				'django.template.context_processors.request',
 			],
 			'builtins': [
-				'django.templatetags.static',
-				'django.templatetags.i18n',
-				'django.templatetags.l10n',
 			],
 		},
 	},
@@ -92,18 +73,6 @@ DATABASES = {
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-	#{
-	#	'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-	#},
-	#{
-	#	'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-	#},
-	#{
-	#	'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-	#},
-	#{
-	#	'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-	#},
 ]
 
 
@@ -120,15 +89,10 @@ USE_TZ = True
 
 LOGGING = {
 	'version': 1,
-	'filters': {
-		'require_debug_true': {
-			'()': 'django.utils.log.RequireDebugTrue',
-		}
-	},
+	'disable_existing_loggers': False,
 	'handlers': {
 		'console': {
 			'level': 'WARNING',
-			'filters': ['require_debug_true'],
 			'class': 'logging.StreamHandler',
 		},
 		'sql': {
