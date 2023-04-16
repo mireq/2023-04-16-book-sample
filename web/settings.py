@@ -118,6 +118,35 @@ TIME_ZONE = 'UTC'
 
 USE_TZ = True
 
+LOGGING = {
+	'version': 1,
+	'filters': {
+		'require_debug_true': {
+			'()': 'django.utils.log.RequireDebugTrue',
+		}
+	},
+	'handlers': {
+		'console': {
+			'level': 'WARNING',
+			'filters': ['require_debug_true'],
+			'class': 'logging.StreamHandler',
+		},
+		'sql': {
+			'level': 'DEBUG',
+			'class': 'logging.StreamHandler',
+		},
+	},
+	'loggers': {
+		'': {
+			'level': 'WARNING',
+			'handlers': ['console'],
+		},
+		'django.db.backends': {
+			'level': 'DEBUG',
+			'handlers': ['sql'],
+		},
+	}
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
